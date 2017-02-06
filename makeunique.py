@@ -2,7 +2,7 @@ import sys
 
 if len(sys.argv) < 3:
         print "Usage: Python make_unique.py <input_file> <output_file>"
-        print "e.g: Python make_unique.py links.txt unique_links.txt"
+        print "e.g: Python make_unique.py links.txt uniquelinks.txt"
 else:
         seen_lines = set()
         outputfile = open(sys.argv[2], "w")
