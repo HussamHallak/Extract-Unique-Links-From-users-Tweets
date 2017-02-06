@@ -6,11 +6,15 @@ if len(sys.argv) != 3:
 else:
         fh_input(sys.argv[1], 'r')
         i = 0
-        while line = fh_input.readline():
+        with open(sys.argv[1]) as fp:
+            for line in fp:
                 link =  "http://memgator.cs.odu.edu/timemap/link/" + line
                 response = urllib2.urlopen(link)
                 content = response.read()
-                output_file_name = sys.argv[2] + str(i)
+                folder_name = "/TimeMaps"
+                if not os.path.isdir(folder_name):
+                        os.makedirs(folder_name)
+                output_file_name = folder_name + sys.argv[2] + str(i)
                 fh_output = open(output_file_name, "w")
                 fh_output.write(content)
                 fh_output.close()
