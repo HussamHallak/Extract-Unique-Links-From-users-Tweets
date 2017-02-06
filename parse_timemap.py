@@ -6,11 +6,11 @@ if len(sys.argv) != 3:
 else:
     i = 0
     fh_output = open(sys.argv[2] , 'w')
-    for counter in range(1,1000):
+    for counter in range(0,999):
         input_file_name = sys.argv[1] + str(i)
         fh_input = open(input_file_name,'r')
         i = i + 1
-        number_of_mementos = 0;
+        number_of_mementos = 0
         while text = fh_input.readline():
             if 'datetime' in text:
                 number_of_mementos = number_of_mementos + 1
