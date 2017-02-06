@@ -21,6 +21,7 @@ else:
                         fh_output.close()
                 except:
                         print "error"
+                        i = i + 1
                         print i
         fh_input.close()
 
