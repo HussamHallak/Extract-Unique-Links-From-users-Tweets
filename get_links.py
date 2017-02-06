@@ -52,17 +52,15 @@ if __name__ == '__main__':
 
     #get tweets for username passed at command line
 
-    if len(sys.argv) >= 2:
-	i = 1
-	for user in sys.argv:
-        	if (i < len(sys.argv)):
-			get_tweets(sys.argv[i])
-		i = i + 1
-    else:
-        print "Error: enter twitter username(s)"
-
-    #alternative method: loop through multiple users
-	# users = ['user1','user2']
-
-	# for user in users:
-# 	get_tweets(user)
+	if len(sys.argv) >= 2:
+		i = 1
+		for user in sys.argv:
+				if (i < len(sys.argv)):
+				get_tweets(sys.argv[i])
+			i = i + 1
+	else:
+			print "Error: You did not enter twitter username(s)"
+			print "Usage: Python get_links.py <twitter_username1> <twitter_username2> <twitter_username3> ...etc"
+			print "e.g: Python get_links.py phonedude_mln HussamHallak1 weiglemc cnn Aljazeera"
+			print "Note 1: Twitter limits this program to 200 tweets per request!"
+			print "Note 2: Links not external to Twitter are not saved!"
