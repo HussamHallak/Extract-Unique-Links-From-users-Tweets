@@ -11,8 +11,7 @@ else:
     fh_input = open(input_file_name,'r')
     i = i + 1
     number_of_mementos = 0;
-    while True:
-      text = fh_input.readline()
+    while text = fh_input.readline():
       if 'datetime' in text:
         number_of_mementos = number_of_mementos + 1
     fh_output.write(number_of_mementos)
