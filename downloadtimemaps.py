@@ -15,10 +15,12 @@ else:
                         response = urllib2.urlopen(link)
                         content = response.read()
                         output_file_name = sys.argv[2] + str(i)
+                        i = i + 1
                         fh_output = open(output_file_name, "w")
                         fh_output.write(content)
                         fh_output.close()
                 except:
                         print "error"
+                        print i
         fh_input.close()
 
