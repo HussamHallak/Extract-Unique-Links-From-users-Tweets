@@ -15,7 +15,8 @@ if len(sys.argv) != 3:
     print "e.g: Python downloadcreationdatejson.py unique_links.txt creation.json"
 else:
     i = 0
-    fh_input = open(sys.argv[1])
+    fh_input = open(sys.argv[1], 'r')
+    fh_output = open(sys.argv[2], 'w')
     for line in fh_input:
         try:
             link =  "http://cd.cs.odu.edu/cd?url=" + line
@@ -31,13 +32,10 @@ else:
             date1 = date(year_C, month_C, day_C)
             today = date(current_datetime.year, current_datetime.month, current_datetime.day)
             old_in_days = (today - date1).days
-            #end
-            output_file_name = sys.argv[2] + str(i)
-            fh_output = open(output_file_name, "w")
-            json.dump(content, fh_output)
-            #fh_output.write(content)
-            fh_output.close()
+            fh_output.write(old_in_days)
+            fh_output.write("\n")
         except:
             print "This link came with an error code:"
             print "http://cd.cs.odu.edu/cd?url=" + line
-fh_input.close()
+    fh_input.close()
+    fh_output.close()
