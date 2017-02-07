@@ -6,7 +6,7 @@ if len(sys.argv) != 3:
     print "e.g: Python parsejsontimemap.py timemap.json timemap_report.txt"
 else:
     fh_output = open(sys.argv[2] , 'w')
-    i = 0
+    i = 1
     for i in range(0,999):
         input_file_name = sys.argv[1] + str(i)
         if (fh_input = open(input_file_name, 'r')):
