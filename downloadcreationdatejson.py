@@ -5,10 +5,10 @@ from datetime import *
 
 current_datetime = datetime.now()
 
-d0 = date(2008, 8, 18)
-d1 = date(2008, 9, 26)
-delta = d0 - d1
-print delta.days
+#d0 = date(2008, 8, 18)
+#d1 = date(2008, 9, 26)
+#delta = d0 - d1
+#print delta.days
 
 if len(sys.argv) != 3:
     print "Usage: Python downloadcreationdatejson.py <input_file> <output_file>"
