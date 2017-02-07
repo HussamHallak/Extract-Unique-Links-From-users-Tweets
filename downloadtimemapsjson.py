@@ -7,12 +7,12 @@ if len(sys.argv) != 3:
 else:
     i = 0
     fh_input = open(sys.argv[1])
-        for line in fh_input:
-            link =  "http://memgator.cs.odu.edu/timemap/json/" + line
-            response = urllib2.urlopen(link)
-            content = json.load(response)
-            output_file_name = sys.argv[2] + str(i)
-            fh_output = open(output_file_name, "w")
-            fh_output.write(content)
-            fh_output.close()
+    for line in fh_input:
+        link =  "http://memgator.cs.odu.edu/timemap/json/" + line
+        response = urllib2.urlopen(link)
+        content = json.load(response)
+        output_file_name = sys.argv[2] + str(i)
+        fh_output = open(output_file_name, "w")
+        fh_output.write(content)
+        fh_output.close()
     fh_input.close()
