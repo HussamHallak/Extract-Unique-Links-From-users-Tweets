@@ -13,6 +13,7 @@ else:
         content = json.load(response)
         output_file_name = sys.argv[2] + str(i)
         fh_output = open(output_file_name, "w")
-        fh_output.write(content)
+        json.dump(content, fh_output)
+        #fh_output.write(content)
         fh_output.close()
     fh_input.close()
