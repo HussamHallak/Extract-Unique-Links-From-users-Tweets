@@ -1,23 +1,26 @@
 import sys
 import urllib2
 import json
-if len(sys.argv) != 3:
-    print "Usage: Python downloadtimemapsjson.py <input_file> <output_file>"
-    print "e.g: Python downloadtimemapsjson.py unique_links.txt timemap.json"
+if len(sys.argv) != 4:
+    print "Usage: Python downloadtimemapsjson.py <input_file> <output_file1> <output_file2>"
+    print "e.g: Python downloadtimemapsjson.py unique_links.txt timemap.json unique_links_with_memes.txt"
 else:
     i = 0
-    fh_input = open(sys.argv[1])
+    fh_input = open(sys.argv[1], 'r')
+    fh_output = open(sys.argv[3], 'w')
     for line in fh_input:
         try:
             link =  "http://memgator.cs.odu.edu/timemap/json/" + line
             response = urllib2.urlopen(link)
             content = json.load(response)
             output_file_name = sys.argv[2] + str(i)
-            fh_output = open(output_file_name, "w")
-            json.dump(content, fh_output)
-            #fh_output.write(content)
-            fh_output.close()
+            fh_json_output = open(output_file_name, "w")
+            json.dump(content, fh_json_output)
+            fh_output.write(line)
+            fh_output.write("\n")
+            fh_json_output.close()
         except:
             print "This link came with an error code:"
             print "http://memgator.cs.odu.edu/timemap/json/" + line
     fh_input.close()
+    fh_output.close()
