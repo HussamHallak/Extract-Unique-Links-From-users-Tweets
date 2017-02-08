@@ -19,9 +19,7 @@ else:
             creation_date = data['Estimated Creation Date']
             creation_date = str(creation_date)
             if creation_date:
-                print creation_date
                 creation_date_clean = creation_date[0:10]
-                print creation_date_clean
                 year_C = creation_date_clean.split('-')[0]
                 month_C = creation_date_clean.split('-')[1]
                 day_C = creation_date_clean.split('-')[2]
