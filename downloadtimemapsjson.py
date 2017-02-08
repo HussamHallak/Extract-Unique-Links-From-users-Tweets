@@ -24,4 +24,3 @@ else:
             print "http://memgator.cs.odu.edu/timemap/json/" + line
     fh_input.close()
     fh_output.close()
-
