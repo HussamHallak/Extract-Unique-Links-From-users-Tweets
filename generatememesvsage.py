@@ -6,18 +6,25 @@ from datetime import *
 current_datetime = datetime.now()
 
 if len(sys.argv) != 3:
-    print "Usage: Python downloadcreationdatejson.py <input_file> <output_file>"
-    print "e.g: Python downloadcreationdatejson.py uniquelinks.txt creationreport.txt"
+    print "Usage: Python generatememesvsage.py <input_file> <output_file>"
+    print "e.g: Python generatememesvsage.py uniquelinkswithmemes.txt memesvsage.txt"
 else:
     fh_input = open(sys.argv[1], 'r')
     fh_output = open(sys.argv[2], 'w')
     for line in fh_input:
         try:
-            link =  "http://cd.cs.odu.edu/cd?url=" + line
-            response = urllib2.urlopen(link)
-            data = json.load(response)
-            creation_date = data['Estimated Creation Date']
+            cr_link =  "http://cd.cs.odu.edu/cd?url=" + line
+            me_link = "http://memgator.cs.odu.edu/timemap/json/" + line
+            cr_response = urllib2.urlopen(cr_link)
+            me_response = urllib2.urlopen(me_link)
+            cr_data = json.load(cr_response)
+            me_data = json.load(me_response)
+            memes = len(me_data['mementos']['list'])
+            memes = str(memes)
+            creation_date = cr_data['Estimated Creation Date']
             creation_date = str(creation_date)
+            fh_output.write('Age in days (X)     Number of mementos (Y)')
+            fh_output.write('\n')
             if creation_date:
                 creation_date_clean = creation_date[0:10]
                 year_C = creation_date_clean.split('-')[0]
@@ -33,6 +40,10 @@ else:
                 old_in_days = (today - date1).days
                 old_in_days = str(old_in_days)
                 fh_output.write(old_in_days)
+            else:
+                fh_output.write('0')
+            fh_output.write('                                           ')
+            fh_output.write(memes)
                 fh_output.write("\n")
         except:
             print "This link generated an error:"
